@@ -209,13 +209,20 @@ def process_sprites(stage, last_positions, interpolation_alpha, image_table, tin
             
             if display_name.startswith('APT') or display_name.startswith('POS'):
                 text_y = y + h * 0.9
+                text_x = x + w/2
                 va = 'top'
+            elif display_name.startswith('CIT'):
+                display_name = display_name.replace("CIT", "")
+                text_y = y + h/2
+                text_x = x + w * 0.99
+                va = 'center'
             else:
                 text_y = y + h/2
+                text_x = x + w/2
                 va = 'center'
                 
             ax.text(
-                x + w/2, text_y, display_name, 
+                text_x, text_y, display_name, 
                 ha='center', va=va,
                 color='white' if sum(color[:3]) < 1.5 else 'black'
             )

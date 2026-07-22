@@ -131,23 +131,22 @@ class LogisticsVisualizer(Visualizer):
         and the maximum number of locations/airports inside a city to adjust their widths in the AP.
         '''
         max_at, max_in_city = self.vfg_plan.get_max_elements()
-        max_width = self.figsize*self.dpi
 
-        loc_width = max_at * 100 + 40
+        loc_width = max_at * 250
         
         # counts = self.vfg_plan.get_object_counts()
-        num_cities = 6# max(counts['cities'], 1)
+        num_cities = 6 # max(counts['cities'], 1)
         
-        city_width = max(max_width, max_in_city * (loc_width + 30) + 10)
+        city_width = max_in_city * (loc_width + 60) + 80
 
-        city_height = int(city_width / (num_cities*1.2))
+        city_height = int(city_width / (num_cities*1.1))//2
         loc_height = int(city_height * 0.85)
         
         truck_height = int(loc_height * 0.66)
         plane_height = int(loc_height * 0.66)
         package_height = int(truck_height * 0.6)
-        element_width = 80#int(loc_width/max_at)
-        
+        element_width = int(loc_width/(max_at+1))
+        package_width = element_width
         
         new_animation_profile = self.animation_profile_text.format_map({
             'CITY_WIDTH': str(city_width),
@@ -160,17 +159,18 @@ class LogisticsVisualizer(Visualizer):
             'PLANE_HEIGHT': str(plane_height),
             'PACKAGE_HEIGHT': str(package_height),
             'ELEMENT_WIDTH': str(element_width),
+            'PACKAGE_WIDTH': str(package_width),
         })
 
         figure_params = {
-            'figure.figsize': (self.figsize, self.figsize),
+            'figure.figsize': (int(self.figsize*2), self.figsize),
             'figure.dpi': self.dpi,
             'figure.subplot.left': 0.01,
             'figure.subplot.right': 0.99,
             'figure.subplot.bottom': 0.01,
             'figure.subplot.top': 0.99,
             'axes.linewidth':0.5,
-            'font.size': 19,
+            'font.size': 21,
         }
         return new_animation_profile, figure_params
     
