@@ -100,7 +100,7 @@ class BlocksWorldVisualizer(Visualizer):
 
         # update rcparams of matplotlib
         figure_params = {
-            'figure.figsize': (8, 8),#(self.figsize, self.figsize),
+            'figure.figsize': (self.figsize, self.figsize),
             'figure.dpi': self.dpi,
             'font.size': int(block_size*1.4),
             'font.weight': max(50, block_size//50),
