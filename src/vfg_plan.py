@@ -105,3 +105,8 @@ class LogisticsVfgPlan(VfgPlan):
             elif obj.startswith('obj'):
                 counts['packages'] += 1
         return counts
+
+
+class GridVfgPlan(VfgPlan):
+    def __init__(self, plan: Plan, domain_text: str, problem_text: str):
+        super().__init__(plan, domain_text, problem_text)

@@ -4,8 +4,8 @@ import os
 import sys
 import logging
 from src.convert import GenericConverter, parse_xml_plan_name
-from src.vfg_plan import BlocksWorldVfgPlan, LogisticsVfgPlan
-from src.visualizer import BlocksWorldVisualizer, LogisticsVisualizer
+from src.vfg_plan import BlocksWorldVfgPlan, LogisticsVfgPlan, GridVfgPlan
+from src.visualizer import BlocksWorldVisualizer, LogisticsVisualizer, GridVisualizer
 from src.logger import setup_logging
 
 # logging configuration
@@ -22,6 +22,11 @@ DOMAIN_REGISTRY = {
     'logistics': {
         'visualizer': LogisticsVisualizer,
         'vfg_plan': LogisticsVfgPlan,
+        'problem_name_parser': parse_xml_plan_name
+    },
+    'grid': {
+        'visualizer': GridVisualizer,
+        'vfg_plan': GridVfgPlan,
         'problem_name_parser': parse_xml_plan_name
     }
 }
