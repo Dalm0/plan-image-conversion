@@ -215,10 +215,13 @@ class FreecellVisualizer(Visualizer):
         super().__init__(grid_plan, format, result_folder, animation_profile_text, {})
 
     def adjust_animation_profile(self):
+        max_dim = self.animation_profile_params.get('max_dimensions', 10)
+        font_height = ((self.figsize*self.dpi)//max_dim)*0.8
+
         figure_params = {
             'figure.figsize': (self.figsize, self.figsize),
             'figure.dpi': self.dpi,
-            'font.weight': 'bold',
+            'font.size': font_height,
             'figure.subplot.left': 0.01,
             'figure.subplot.right': 0.99,
             'figure.subplot.bottom': 0.01,
