@@ -118,3 +118,7 @@ class FreecellVfgPlan(VfgPlan):
 class SokobonVfgPlan(VfgPlan):
     def __init__(self, plan: Plan, domain_text: str, problem_text: str):
         super().__init__(plan, domain_text, problem_text)
+
+class HanoiVfgPlan(VfgPlan):
+    def __init__(self, plan: Plan, domain_text: str, problem_text: str):
+        super().__init__(plan, domain_text, problem_text)

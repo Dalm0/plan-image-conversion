@@ -16,7 +16,8 @@ from src.visualizer import (
     LogisticsVisualizer,
     GridVisualizer,
     FreecellVisualizer,
-    SokobonVisualizer
+    SokobonVisualizer,
+    HanoiVisualizer
 )
 from src.logger import setup_logging
 
@@ -49,6 +50,11 @@ DOMAIN_REGISTRY = {
     'sokobon': {
         'visualizer': SokobonVisualizer,
         'vfg_plan': SokobonVfgPlan,
+        'problem_name_parser': parse_xml_plan_name
+    },
+    'hanoi': {
+        'visualizer': HanoiVisualizer,
+        'vfg_plan': HanoiVfgPlan,
         'problem_name_parser': parse_xml_plan_name
     }
 }
