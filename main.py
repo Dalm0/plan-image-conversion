@@ -8,13 +8,15 @@ from src.vfg_plan import (
     BlocksWorldVfgPlan,
     LogisticsVfgPlan,
     GridVfgPlan,
-    FreecellVfgPlan
+    FreecellVfgPlan,
+    SokobonVfgPlan
 )
 from src.visualizer import (
     BlocksWorldVisualizer,
     LogisticsVisualizer,
     GridVisualizer,
-    FreecellVisualizer
+    FreecellVisualizer,
+    SokobonVisualizer
 )
 from src.logger import setup_logging
 
@@ -42,6 +44,11 @@ DOMAIN_REGISTRY = {
     'freecell': {
         'visualizer': FreecellVisualizer,
         'vfg_plan': FreecellVfgPlan,
+        'problem_name_parser': parse_xml_plan_name
+    },
+    'sokobon': {
+        'visualizer': SokobonVisualizer,
+        'vfg_plan': SokobonVfgPlan,
         'problem_name_parser': parse_xml_plan_name
     }
 }

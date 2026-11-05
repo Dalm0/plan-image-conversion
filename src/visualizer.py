@@ -3,7 +3,8 @@ from vfg_plan import (
     BlocksWorldVfgPlan,
     LogisticsVfgPlan,
     GridVfgPlan,
-    FreecellVfgPlan
+    FreecellVfgPlan,
+    SokobonVfgPlan
 )
 import zipfile, os, re, json
 from exporter import export_media
@@ -222,6 +223,28 @@ class FreecellVisualizer(Visualizer):
             'figure.figsize': (self.figsize, self.figsize),
             'figure.dpi': self.dpi,
             'font.size': font_height,
+            'figure.subplot.left': 0.01,
+            'figure.subplot.right': 0.99,
+            'figure.subplot.bottom': 0.01,
+            'figure.subplot.top': 0.99
+        }
+        return self.animation_profile_text, figure_params
+
+    def get_plan_name(self):
+        pattern = r'p\d+(?:_\d+)?'
+        match = re.search(pattern, os.path.basename(self.vfg_plan.plan.plan_name))
+        return match.group() if match else super().get_plan_name()
+
+class SokobonVisualizer(Visualizer):
+    def __init__(self, sokobon_plan: SokobonVfgPlan, format: str, result_folder: str, animation_profile_text: str, figsize=8, dpi=32):
+        self.figsize = figsize
+        self.dpi = dpi
+        super().__init__(sokobon_plan, format, result_folder, animation_profile_text, {})
+
+    def adjust_animation_profile(self):
+        figure_params = {
+            'figure.figsize': (self.figsize, self.figsize),
+            'figure.dpi': self.dpi,
             'figure.subplot.left': 0.01,
             'figure.subplot.right': 0.99,
             'figure.subplot.bottom': 0.01,
